@@ -18,16 +18,16 @@
         }
         /* Warna yang sesuai dengan contoh */
         .custom-sidebar-bg {
-            background-color: #343a40; /* Warna abu-abu gelap untuk sidebar */
+            background-color: #30334a; /* Warna abu-abu gelap untuk sidebar */
         }
         .custom-navbar-bg {
-            background-color: #343a40; /* Warna abu-abu untuk navbar atas */
+            background-color: #30334a; /* Warna abu-abu untuk navbar atas */
         }
         .custom-hover:hover {
             background-color: #495057; /* Warna hover sidebar */
         }
         .dropdown-menu {
-            background-color: #343a40; /* Warna latar belakang dropdown menjadi abu-abu gelap */
+            background-color: #30334a; /* Warna latar belakang dropdown menjadi abu-abu gelap */
         }
         .sidebar-text {
             color: #ffffff; /* Warna teks sidebar menjadi putih */
@@ -44,7 +44,7 @@
             <div class="p-4 flex-grow overflow-y-auto scrollbar-hide">
                 <!-- Placeholder untuk Logo -->
                 <div class="text-center mb-8">
-                    <h1 class="text-2xl font-bold text-white">[LOGO]</h1>
+                <img src="{{ asset('images/svg/image.png') }}" alt="Logo" class="w-35 mx-2">
                 </div>
                 <!-- Sidebar Menu -->
                 <ul>
@@ -166,47 +166,60 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Tabel Model -->
-            <div class="p-6 bg-gray-100 h-full overflow-y-auto">
-                <div class="bg-white shadow-md rounded">
-                    <table class="min-w-full table-auto">
-                        <thead class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                            <tr>
-                                <th class="py-3 px-6 text-left">No</th>
-                                <th class="py-3 px-6 text-left">Model Name</th>
-                                <th class="py-3 px-6 text-left">Description</th>
-                                <th class="py-3 px-6 text-center">Status</th>
-                                <th class="py-3 px-6 text-center">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-gray-600 text-sm font-light">
-                            <!-- Contoh data statis -->
-                            <tr class="border-b border-gray-200 hover:bg-gray-100">
-                                <td class="py-3 px-6 text-left whitespace-nowrap">1</td>
-                                <td class="py-3 px-6 text-left">KVB</td>
-                                <td class="py-3 px-6 text-left">Beat 120</td>
-                                <td class="py-3 px-6 text-center">
-                                    <span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Active</span>
-                                </td>
-                                <td class="py-3 px-6 text-center">
-                                    <div class="flex item-center justify-center">
-                                        <a href="#" class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        <a href="#" class="w-4 mr-2 transform hover:text-red-500 hover:scale-110">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <!-- Tambah data sesuai kebutuhan -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            <div class="p-6 bg-gray-100">
+    <div class="bg-white shadow-md rounded mb-0"> <!-- Menghilangkan margin bawah -->
+        <div class="flex justify-end items-center">
+        <div class="mr-60"></div>
+        <div class="mr-60"></div>
+            <input type="text" placeholder="Search Models..." class="border border-gray-300 rounded p-2 flex-grow" />
+            <!-- Tombol Add New Model -->
+            <button class="bg-blue-500 text-white py-2 px-4 rounded ml-2">
+                Add New Model
+            </button>
         </div>
     </div>
+
+    <!-- Tabel Model -->
+    <div class="p-0 bg-gray-100 h-full overflow-y-auto"> <!-- Menghilangkan padding -->
+        <div class="bg-white shadow-md rounded">
+            <table class="min-w-full table-auto">
+                <thead class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                    <tr>
+                        <th class="py-3 px-6 text-left">No</th>
+                        <th class="py-3 px-6 text-left">Model Name</th>
+                        <th class="py-3 px-6 text-left">Description</th>
+                        <th class="py-3 px-6 text-center">Status</th>
+                        <th class="py-3 px-6 text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-600 text-sm font-light">
+                    <!-- Contoh data statis -->
+                    <tr class="border-b border-gray-200 hover:bg-gray-100">
+                        <td class="py-3 px-6 text-left whitespace-nowrap">1</td>
+                        <td class="py-3 px-6 text-left">KVB</td>
+                        <td class="py-3 px-6 text-left">Beat 120</td>
+                        <td class="py-3 px-6 text-center">
+                            <span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Active</span>
+                        </td>
+                        <td class="py-3 px-6 text-center">
+                            <div class="flex item-center justify-center">
+                                <a href="#" class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="#" class="w-4 mr-2 transform hover:text-red-500 hover:scale-110">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Tambah data sesuai kebutuhan -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
 
     <!-- JavaScript -->
     <script>
