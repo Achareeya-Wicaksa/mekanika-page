@@ -164,7 +164,7 @@
         <div class="mr-60"></div>
             <input type="text" placeholder="Search Models..." class="border border-gray-300 rounded p-2 flex-grow" />
             <button id="openModal" class="bg-blue-500 text-white py-2 px-4 rounded ml-2">
-                Add New Model
+                Add New Parts
             </button>
         </div>
     </div>
@@ -227,13 +227,49 @@
     <div class="bg-white rounded-lg shadow-lg p-6 w-1/3">
         <h2 class="text-xl font-semibold mb-4">Edit Model</h2>
         <form id="editForm">
-            <div class="mb-4">
-                <label for="name" class="block text-gray-700">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Enter model name" class="border border-gray-300 rounded p-2 w-full" required />
+        <div class="mb-4">
+                <label class="block text-gray-700" for="name">Name*</label>
+                <input type="text" value="CYLINDER COMP" id="name" class="border border-gray-300 rounded p-2 w-full" required />
+            </div>
+            <div class="flex space-x-4 mb-4">
+                <div class="w-full">
+                    <label class="block text-gray-700" for="model">Model*</label>
+                    <input type="text" id="model" value="KVB" class="border border-gray-300 rounded p-2 w-full" required />
+                </div>
+                <div class="w-full">
+                    <label class="block text-gray-700" for="partCode">Part Code*</label>
+                    <select id="partCode" class="border border-gray-300 rounded p-2 w-full" required>
+                        <option value="CY">CY</option>
+                        <!-- Tambahkan opsi lain sesuai kebutuhan -->
+                    </select>
+                </div>
+            </div>
+            <div class="flex space-x-4 mb-4">
+                <div class="w-full">
+                    <label class="block text-gray-700" for="partNumber">Part Number*</label>
+                    <input type="text" value="P0001" id="partNumber" class="border border-gray-300 rounded p-2 w-full" required />
+                </div>
+                <div class="w-full">
+                    <label class="block text-gray-700" for="qtyCarts">Qty Carts*</label>
+                    <input type="number" id="qtyCarts" class="border border-gray-300 rounded p-2 w-full" value="100" required />
+                </div>
             </div>
             <div class="mb-4">
-                <label for="description" class="block text-gray-700">Description:</label>
-                <textarea id="description" name="description" placeholder="Enter model description" class="border border-gray-300 rounded p-2 w-full" required></textarea>
+                <label class="block text-gray-700">Image*</label>
+                <div class="flex space-x-4">
+                    <div class="flex flex-col items-center cursor-pointer">
+                        <img src="path_to_image1.png" alt="Illustration Fix" class="w-16 h-16 mb-2" />
+                        <span>Illustration Fix</span>
+                    </div>
+                    <div class="flex flex-col items-center cursor-pointer">
+                        <img src="path_to_image2.png" alt="Illustration Move" class="w-16 h-16 mb-2" />
+                        <span>Illustration Move</span>
+                    </div>
+                    <div class="flex flex-col items-center cursor-pointer">
+                        <img src="path_to_image3.png" alt="Illustration Core" class="w-16 h-16 mb-2" />
+                        <span>Illustration Core</span>
+                    </div>
+                </div>
             </div>
             <div class="flex justify-end">
                 <button type="button" id="cancelEdit" class="bg-gray-300 text-gray-700 py-2 px-4 rounded mr-2">Cancel</button>
@@ -241,7 +277,6 @@
             </div>
         </form>
     </div>
-</div>
 </div>
 <div id="modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
 <div class="bg-white rounded-lg shadow-lg p-6 w-96">
@@ -321,8 +356,6 @@
     editButton.addEventListener('click', (event) => {
         event.preventDefault(); 
         
-        document.getElementById('name').value = 'KVB'; 
-        document.getElementById('description').value = 'Beat 120'; 
 
         editPopup.classList.remove('hidden'); 
     });
