@@ -169,16 +169,17 @@
             <div class="p-6 bg-gray-100">
     <div class="bg-white shadow-md rounded mb-0"> <!-- Menghilangkan margin bawah -->
         <div class="flex justify-end items-center">
+            <h1 class="ml-4">Models</h1>
         <div class="mr-60"></div>
         <div class="mr-60"></div>
             <input type="text" placeholder="Search Models..." class="border border-gray-300 rounded p-2 flex-grow" />
             <!-- Tombol Add New Model -->
-            <button class="bg-blue-500 text-white py-2 px-4 rounded ml-2">
+            <button id="openModal" class="bg-blue-500 text-white py-2 px-4 rounded ml-2">
                 Add New Model
             </button>
         </div>
     </div>
-
+        <!-- Modal -->
     <!-- Tabel Model -->
     <div class="p-0 bg-gray-100 h-full overflow-y-auto"> <!-- Menghilangkan padding -->
         <div class="bg-white shadow-md rounded">
@@ -203,10 +204,10 @@
                         </td>
                         <td class="py-3 px-6 text-center">
                             <div class="flex item-center justify-center">
-                                <a href="#" class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                            <a href="#" id="editButton" class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <a href="#" class="w-4 mr-2 transform hover:text-red-500 hover:scale-110">
+                                <a href="#" id="deleteButton" class="w-4 mr-2 transform hover:text-red-500 hover:scale-110">
                                     <i class="fas fa-trash"></i>
                                 </a>
                             </div>
@@ -218,11 +219,115 @@
         </div>
     </div>
 </div>
-
-
+<div id="editPopup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-1/3">
+        <h2 class="text-xl font-semibold mb-4">Edit Model</h2>
+        <form id="editForm">
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter model name" class="border border-gray-300 rounded p-2 w-full" required />
+            </div>
+            <div class="mb-4">
+                <label for="description" class="block text-gray-700">Description:</label>
+                <textarea id="description" name="description" placeholder="Enter model description" class="border border-gray-300 rounded p-2 w-full" required></textarea>
+            </div>
+            <div class="flex justify-end">
+                <button type="button" id="cancelEdit" class="bg-gray-300 text-gray-700 py-2 px-4 rounded mr-2">Cancel</button>
+                <button type="submit" id="saveEdit" class="bg-blue-500 text-white py-2 px-4 rounded">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-1/3">
+        <h2 class="text-xl font-semibold mb-4">Add Model</h2>
+        <form id="modelForm">
+            <div class="mb-4">
+                <label for="modelName" class="block text-sm font-medium text-gray-700">Name</label>
+                <input type="text" id="modelName" placeholder="Enter model name" class="border border-gray-300 rounded p-2 w-full" required />
+            </div>
+            <div class="mb-4">
+                <label for="modelDescription" class="block text-sm font-medium text-gray-700">Description</label>
+                <textarea id="modelDescription" placeholder="Enter model description" class="border border-gray-300 rounded p-2 w-full" rows="4" required></textarea>
+            </div>
+            <div class="flex justify-end">
+                <button type="button" id="closeModal" class="bg-gray-300 text-gray-700 py-2 px-4 rounded mr-2">Cancel</button>
+                <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="confirmDeletePopup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-1/3 text-center">
+        <img src="https://cdn-icons-png.flaticon.com/512/1214/1214890.png" alt="Trash" class="w-16 h-16 mx-auto mb-4" />
+        <h2 class="text-xl font-semibold mb-4">Are you sure you want to delete this item?</h2>
+        <div class="flex justify-center">
+            <button id="cancelDelete" class="bg-gray-300 text-gray-700 py-2 px-4 rounded mr-2">Cancel</button>
+            <button id="confirmDelete" class="bg-red-500 text-white py-2 px-4 rounded">Delete</button>
+        </div>
+    </div>
+</div>
 
     <!-- JavaScript -->
     <script>
+         // Mendapatkan elemen pop-up dan tombol
+    const editPopup = document.getElementById('editPopup');
+    const editButton = document.getElementById('editButton');
+    const cancelEditButton = document.getElementById('cancelEdit');
+    const editForm = document.getElementById('editForm');
+
+    // Menampilkan pop-up saat tombol edit diklik
+    editButton.addEventListener('click', (event) => {
+        event.preventDefault(); // Mencegah link default
+        
+        // Mengisi form dengan data dari tabel
+        document.getElementById('name').value = 'KVB'; // Ganti dengan data yang sesuai
+        document.getElementById('description').value = 'Beat 120'; // Ganti dengan data yang sesuai
+
+        editPopup.classList.remove('hidden'); // Menampilkan pop-up
+    });
+
+    // Menutup pop-up saat tombol "Cancel" diklik
+    cancelEditButton.addEventListener('click', () => {
+        editPopup.classList.add('hidden'); // Menutup pop-up
+    });
+
+    // Menangani logika penyimpanan data saat form disubmit
+    editForm.addEventListener('submit', (event) => {
+        event.preventDefault(); // Mencegah reload halaman
+
+        const name = document.getElementById('name').value;
+        const description = document.getElementById('description').value;
+
+        // Tambahkan logika untuk menyimpan data di sini
+        console.log("Updated Name:", name); // Ganti dengan logika penyimpanan yang sesuai
+        console.log("Updated Description:", description);
+
+        editPopup.classList.add('hidden'); // Menutup pop-up setelah menyimpan
+    });
+        // Mendapatkan elemen pop-up dan tombol
+    const confirmDeletePopup = document.getElementById('confirmDeletePopup');
+    const deleteButton = document.getElementById('deleteButton');
+    const cancelDeleteButton = document.getElementById('cancelDelete');
+    const confirmDeleteButton = document.getElementById('confirmDelete');
+
+    // Menampilkan pop-up saat tombol hapus diklik
+    deleteButton.addEventListener('click', (event) => {
+        event.preventDefault(); // Mencegah link default
+        confirmDeletePopup.classList.remove('hidden'); // Menampilkan pop-up
+    });
+
+    // Menutup pop-up saat tombol "Cancel" diklik
+    cancelDeleteButton.addEventListener('click', () => {
+        confirmDeletePopup.classList.add('hidden'); // Menutup pop-up
+    });
+
+    // Menangani logika hapus item saat tombol "Delete" diklik
+    confirmDeleteButton.addEventListener('click', () => {
+        // Tambahkan logika untuk menghapus item di sini
+        console.log("Item deleted"); // Ganti dengan logika penghapusan yang sesuai
+        confirmDeletePopup.classList.add('hidden'); // Menutup pop-up setelah menghapus
+    });
         function toggleDropdown(dropdownId) {
             var dropdown = document.getElementById(dropdownId);
             dropdown.classList.toggle('hidden');
@@ -235,6 +340,28 @@
             month: 'long',
             year: 'numeric'
         });
+        // Mendapatkan elemen modal dan tombol
+    const modal = document.getElementById('modal');
+    const openModalButton = document.getElementById('openModal');
+    const closeModalButton = document.getElementById('closeModal');
+    const modelForm = document.getElementById('modelForm');
+
+    // Menampilkan modal saat tombol "Add New Model" diklik
+    openModalButton.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+    });
+
+    // Menutup modal saat tombol "Cancel" diklik
+    closeModalButton.addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    // Menutup modal saat form disubmit (tambahkan logika simpan data di sini)
+    modelForm.addEventListener('submit', (event) => {
+        event.preventDefault(); // Mencegah reload halaman
+        // Logika untuk menyimpan data dapat ditambahkan di sini
+        modal.classList.add('hidden'); // Menutup modal setelah menyimpan data
+    });
     </script>
 </body>
 </html>
