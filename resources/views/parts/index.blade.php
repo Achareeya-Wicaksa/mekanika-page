@@ -240,7 +240,6 @@
                     <label class="block text-gray-700" for="partCode">Part Code*</label>
                     <select id="partCode" class="border border-gray-300 rounded p-2 w-full" required>
                         <option value="CY">CY</option>
-                        <!-- Tambahkan opsi lain sesuai kebutuhan -->
                     </select>
                 </div>
             </div>

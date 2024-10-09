@@ -4,49 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Models Page</title>
-    <!-- Tambahkan Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
-        /* Custom scroll bar */
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
         }
         .scrollbar-hide {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none;  
+            scrollbar-width: none;  
         }
-        /* Warna yang sesuai dengan contoh */
         .custom-sidebar-bg {
-            background-color: #30334a; /* Warna abu-abu gelap untuk sidebar */
+            background-color: #30334a; 
         }
         .custom-navbar-bg {
-            background-color: #30334a; /* Warna abu-abu untuk navbar atas */
+            background-color: #30334a; 
         }
         .custom-hover:hover {
-            background-color: #495057; /* Warna hover sidebar */
+            background-color: #495057; 
         }
         .dropdown-menu {
-            background-color: #30334a; /* Warna latar belakang dropdown menjadi abu-abu gelap */
+            background-color: #30334a; 
         }
         .sidebar-text {
-            color: #ffffff; /* Warna teks sidebar menjadi putih */
+            color: #ffffff; 
         }
     </style>
 </head>
 <body class="bg-gray-100">
 
-    <!-- Wrapper -->
     <div class="flex">
 
-        <!-- Sidebar -->
         <div class="w-64 custom-sidebar-bg h-screen flex flex-col justify-between">
             <div class="p-4 flex-grow overflow-y-auto scrollbar-hide">
-                <!-- Placeholder untuk Logo -->
                 <div class="text-center mb-8">
                 <img src="{{ asset('images/svg/image.png') }}" alt="Logo" class="w-35 mx-2">
                 </div>
-                <!-- Sidebar Menu -->
                 <ul>
                     <li class="mb-4">
                         <a href="#" class="flex items-center text-sm py-3 px-6 rounded custom-hover sidebar-text">
@@ -154,10 +147,10 @@
                         <span id="currentDate">12 Agustus 2024</span>
                     </div>
                     <div class="mr-4">
-                        <span class="mr-2"><i class="fas fa-sun"></i></span> <!-- Ikon Matahari -->
+                        <span class="mr-2"><i class="fas fa-sun"></i></span> 
                     </div>
                     <div class="mr-4">
-                        <span class="mr-2"><i class="fas fa-phone"></i></span> <!-- Ikon Telepon -->
+                        <span class="mr-2"><i class="fas fa-phone"></i></span> 
                     </div>
                     <div class="mr-4">
                     <img src="{{ asset('images/svg/user-dark.png') }}" alt="Logo" class="w-5 mx-2">
@@ -165,21 +158,18 @@
                 </div>
             </div>
             <div class="p-6 bg-gray-100">
-    <div class="bg-white shadow-md rounded mb-0"> <!-- Menghilangkan margin bawah -->
+    <div class="bg-white shadow-md rounded mb-0"> 
         <div class="flex justify-end items-center">
             <h1 class="ml-4">Models</h1>
         <div class="mr-60"></div>
         <div class="mr-60"></div>
             <input type="text" placeholder="Search Models..." class="border border-gray-300 rounded p-2 flex-grow" />
-            <!-- Tombol Add New Model -->
             <button id="openModal" class="bg-blue-500 text-white py-2 px-4 rounded ml-2">
                 Add New Model
             </button>
         </div>
     </div>
-        <!-- Modal -->
-    <!-- Tabel Model -->
-    <div class="p-0 bg-gray-100 h-full overflow-y-auto"> <!-- Menghilangkan padding -->
+    <div class="p-0 bg-gray-100 h-full overflow-y-auto"> 
         <div class="bg-white shadow-md rounded">
             <table class="min-w-full table-auto">
                 <thead class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
@@ -192,7 +182,6 @@
                     </tr>
                 </thead>
                 <tbody class="text-gray-600 text-sm font-light">
-                    <!-- Contoh data statis -->
                     <tr class="border-b border-gray-200 hover:bg-gray-100">
                         <td class="py-3 px-6 text-left whitespace-nowrap">1</td>
                         <td class="py-3 px-6 text-left">KVB</td>
@@ -211,7 +200,6 @@
                             </div>
                         </td>
                     </tr>
-                    <!-- Tambah data sesuai kebutuhan -->
                 </tbody>
             </table>
         </div>
@@ -269,99 +257,80 @@
     </div>
 </div>
 
-    <!-- JavaScript -->
     <script>
-         // Mendapatkan elemen pop-up dan tombol
     const editPopup = document.getElementById('editPopup');
     const editButton = document.getElementById('editButton');
     const cancelEditButton = document.getElementById('cancelEdit');
     const editForm = document.getElementById('editForm');
 
-    // Menampilkan pop-up saat tombol edit diklik
     editButton.addEventListener('click', (event) => {
-        event.preventDefault(); // Mencegah link default
-        
-        // Mengisi form dengan data dari tabel
-        document.getElementById('name').value = 'KVB'; // Ganti dengan data yang sesuai
-        document.getElementById('description').value = 'Beat 120'; // Ganti dengan data yang sesuai
+        event.preventDefault(); 
+        document.getElementById('name').value = 'KVB'; 
+        document.getElementById('description').value = 'Beat 120'; 
 
-        editPopup.classList.remove('hidden'); // Menampilkan pop-up
+        editPopup.classList.remove('hidden'); 
     });
 
-    // Menutup pop-up saat tombol "Cancel" diklik
     cancelEditButton.addEventListener('click', () => {
-        editPopup.classList.add('hidden'); // Menutup pop-up
+        editPopup.classList.add('hidden'); 
     });
 
-    // Menangani logika penyimpanan data saat form disubmit
     editForm.addEventListener('submit', (event) => {
-        event.preventDefault(); // Mencegah reload halaman
+        event.preventDefault(); 
 
         const name = document.getElementById('name').value;
         const description = document.getElementById('description').value;
 
-        // Tambahkan logika untuk menyimpan data di sini
-        console.log("Updated Name:", name); // Ganti dengan logika penyimpanan yang sesuai
+        console.log("Updated Name:", name); 
         console.log("Updated Description:", description);
 
-        editPopup.classList.add('hidden'); // Menutup pop-up setelah menyimpan
+        editPopup.classList.add('hidden'); 
     });
-        // Mendapatkan elemen pop-up dan tombol
     const confirmDeletePopup = document.getElementById('confirmDeletePopup');
     const deleteButton = document.getElementById('deleteButton');
     const cancelDeleteButton = document.getElementById('cancelDelete');
     const confirmDeleteButton = document.getElementById('confirmDelete');
 
-    // Menampilkan pop-up saat tombol hapus diklik
     deleteButton.addEventListener('click', (event) => {
-        event.preventDefault(); // Mencegah link default
-        confirmDeletePopup.classList.remove('hidden'); // Menampilkan pop-up
+        event.preventDefault(); 
+        confirmDeletePopup.classList.remove('hidden'); 
     });
 
-    // Menutup pop-up saat tombol "Cancel" diklik
     cancelDeleteButton.addEventListener('click', () => {
-        confirmDeletePopup.classList.add('hidden'); // Menutup pop-up
+        confirmDeletePopup.classList.add('hidden'); 
     });
 
-    // Menangani logika hapus item saat tombol "Delete" diklik
     confirmDeleteButton.addEventListener('click', () => {
-        // Tambahkan logika untuk menghapus item di sini
-        console.log("Item deleted"); // Ganti dengan logika penghapusan yang sesuai
-        confirmDeletePopup.classList.add('hidden'); // Menutup pop-up setelah menghapus
+        console.log("Item deleted"); 
+        confirmDeletePopup.classList.add('hidden'); 
     });
         function toggleDropdown(dropdownId) {
             var dropdown = document.getElementById(dropdownId);
             dropdown.classList.toggle('hidden');
         }
 
-        // Pastikan tanggal tetap "12 Agustus 2024"
         document.getElementById('currentDate').innerText = new Date().toLocaleDateString('us-US', {
             weekday: 'long',
             day: 'numeric',
             month: 'long',
             year: 'numeric'
         });
-        // Mendapatkan elemen modal dan tombol
     const modal = document.getElementById('modal');
     const openModalButton = document.getElementById('openModal');
     const closeModalButton = document.getElementById('closeModal');
     const modelForm = document.getElementById('modelForm');
 
-    // Menampilkan modal saat tombol "Add New Model" diklik
     openModalButton.addEventListener('click', () => {
         modal.classList.remove('hidden');
     });
 
-    // Menutup modal saat tombol "Cancel" diklik
     closeModalButton.addEventListener('click', () => {
         modal.classList.add('hidden');
     });
 
-    // Menutup modal saat form disubmit (tambahkan logika simpan data di sini)
     modelForm.addEventListener('submit', (event) => {
-        event.preventDefault(); // Mencegah reload halaman
-        // Logika untuk menyimpan data dapat ditambahkan di sini
-        modal.classList.add('hidden'); // Menutup modal setelah menyimpan data
+        event.preventDefault(); 
+        modal.classList.add('hidden'); a
     });
     </script>
 </body>
