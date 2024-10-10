@@ -19,10 +19,10 @@
             background-color: #30334a; 
         }
         .custom-navbar-bg {
-            background-color: #30334a; 
+            background-color: #ffffff; 
         }
         .custom-hover:hover {
-            background-color: #495057; 
+            background-color: #7467f1; 
         }
         .dropdown-menu {
             background-color: #30334a; 
@@ -30,13 +30,16 @@
         .sidebar-text {
             color: #ffffff; 
         }
+        .navbar-text {
+            color: #30334a; 
+        }
     </style>
 </head>
 <body class="bg-gray-100">
 
     <div class="flex">
 
-        <div class="w-64 custom-sidebar-bg h-screen flex flex-col justify-between">
+        <div class="md:w-64 w-full custom-sidebar-bg h-auto md:h-screen flex flex-col justify-between">
             <div class="p-4 flex-grow overflow-y-auto scrollbar-hide">
                 <div class="text-center mb-8">
                 <img src="{{ asset('images/svg/image.png') }}" alt="Logo" class="w-35 mx-2">
@@ -134,36 +137,40 @@
             
         </div>
 
-        <div class="flex-1 flex flex-col">
+        <div class="flex-1 flex flex-col mt-3 ml-3 mr-3">
 
             <div class="custom-navbar-bg p-4 flex justify-between items-center text-white">
                 <div class="flex">
-                <img src="{{ asset('images/svg/master-data-dark.png') }}" alt="Logo" class="w-5 mx-2">
-                    <h1 class="font-semibold text-lg">Master Data</h1>
+                <img src="{{ asset('images/svg/master-data-light.png') }}" alt="Logo" class="w-5 mx-2">
+                    <h1 class=" navbar-text font-semibold text-lg">Master Data</h1>
                 </div>
                 <div class="flex items-center">
-                    <div class="mr-4">
-                        <span id="currentDate">12 Agustus 2024</span>
+                    <div class="mr-4 navbar-text">
+                        <span id="currentDate"></span>
                     </div>
-                    <div class="mr-4">
+                    <div class="mr-4 navbar-text">
                         <span class="mr-2"><i class="fas fa-sun"></i></span> 
                     </div>
-                    <div class="mr-4">
+                    <div class="mr-4 navbar-text">
                         <span class="mr-2"><i class="fas fa-phone"></i></span> 
                     </div>
-                    <div class="mr-4">
+                    <div class="mr-4 navbar-text">
                     <img src="{{ asset('images/svg/user-dark.png') }}" alt="Logo" class="w-5 mx-2">
                     </div>
                 </div>
             </div>
-            <div class="p-6 bg-gray-100">
-    <div class="bg-white shadow-md rounded mb-0"> 
-        <div class="flex justify-end items-center">
-            <h1 class="ml-4">Parts</h1>
-        <div class="mr-60"></div>
-        <div class="mr-60"></div>
-            <input type="text" placeholder="Search Models..." class="border border-gray-300 rounded p-2 flex-grow" />
-            <button id="openModal" class="bg-blue-500 text-white py-2 px-4 rounded ml-2">
+
+            <div class="mt-3 bg-gray-100 ">
+            <div class="bg-white shadow-md rounded "> 
+            <div class="flex justify-end items-center grid grid-cols-7">
+            <h1 class="justify-start ml-5 font-bold">Parts</h1>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+                <input type="text" placeholder="Search Part..." class="mr-2 ml-2 border border-gray-300 rounded p-1" />
+
+            <button id="openModal" style="background-color: #7467f1;" class=" mr-5 text-white py-2 px-4 rounded ml-2">
                 Add New Parts
             </button>
         </div>
